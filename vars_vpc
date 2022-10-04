@@ -1,0 +1,24 @@
+# Virtual Private Network name
+vpc_name: aws-cicd-vpc
+
+# VPC range
+vpcCidr: "10.20.0.0/16"
+
+# Subnet ranges
+PubSub1Cidr: 10.20.1.0/24
+PubSub2Cidr: 10.20.2.0/24
+PubSub3Cidr: 10.20.3.0/24
+PrivSub1Cidr: 10.20.4.0/24
+PrivSub2Cidr: 10.20.5.0/24
+PrivSub3Cidr: 10.20.6.0/24
+
+# region:
+region: us-east-2
+
+# Zone names
+zone1: us-east-2a
+zone2: us-east-2b
+zone3: us-east-2c
+
+# state
+state: present
