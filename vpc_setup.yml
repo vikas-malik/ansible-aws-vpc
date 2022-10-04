@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: import vpc variables
+      include_vars: vars/vars_vpc
+
+    - name: create ansible aws vpc
+      ec2_vpc_net:
+        name: "{{ vpc_name }}"
+        cidr_block: "{{ vpcCidr }}"
+        region: "{{ region }}"
+        dns_support: yes
+        dns_hostname: yes
+        tenancy: default
+        state: "{{ state }}"
+      register: vpcout
+
+    - debug:
+        var: vpcout
+      
