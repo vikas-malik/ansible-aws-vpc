@@ -1,0 +1,53 @@
+---
+- name: Setup awscicd ansible bastion host
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Import VPC setup variables
+      include_vars: vars/bastion_setup
+
+    - name: Import VPC setup variables
+      include_vars: vars/output_vars
+
+    - name: Create a awscicd key
+      ec2_key:
+        name: awscicd-key
+        region: "{{ region }}"
+      register: key_out
+
+    - name: Save private key in file awscicd-key.pem
+      copy:
+        content: "{{ key_out.key.private_key }}"
+        dest: "./awscicd-key.pem"
+        mode: 0400
+      when: key_out.changed
+
+    - name: Create security group for bastion host
+      ec2_group:
+        name: bastion-host-sg
+        description: Allow port 22 from everywhere and all port within SG
+        region: "{{ region }}"
+        vpc_id: "{{ vpcid }}"
+        rules: 
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: "{{ MYIP }}"
+      register: BastionSG_out
+
+    - name: Creating Bastion host
+      ec2:
+        key_name: awscicd-key
+        region: "{{ region }}"
+        instance_type: t2.micro
+        image: "{{ bastion_ami }}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: "Bastion_host"
+          Project: Ansibletesting
+          Owner: DevOps Team
+        excact_count: 1
+        group_id: "{{ BastionSG_out.group_id }}"
+      register: bastionHost_out
