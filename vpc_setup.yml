@@ -29,7 +29,7 @@
         cidr: "{{ PubSub1Cidr }}"
         map_public: true
         resource_tags:
-          Name: ansible-awscicd1
+          Name: PubSub1
       register: pubsub1_out
 
     - debug:
