@@ -185,6 +185,7 @@
         NATGWid: "{{ NATGW_out.nat_gateway_id }}"
         pubRTid: "{{ pubRT_out.route_table.id }}"
         privRTid: "{{ privRT_out.route_table.id }}"
+        cacheable: yes
     
     - name: Create variables files for vpc output
       copy:
