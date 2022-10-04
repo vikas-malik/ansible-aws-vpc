@@ -133,3 +133,13 @@
           - dest: 0.0.0.0/0
             gateway_id: "{{ igw_out.gateway_id }}"
       register: pubRT_out
+
+    - name: Create NAT Gateway and allocate elastic ip to it if it does not exists in aws
+      ec2_vpc_nat_gateway:
+        state: "{{ state }}"
+        subnet_id: "{{ pubsub1_out.subnet.id }}"
+        wait: yes
+        region: "{{ region }}"
+        if_exist_do_not_create: true
+      register: NATGW_out
+    
