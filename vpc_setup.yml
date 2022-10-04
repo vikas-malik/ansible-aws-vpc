@@ -32,8 +32,8 @@
           Name: PubSub1
       register: pubsub1_out
 
-    - debug:
-        var: pubsub1_out
+    #- debug:
+    #   var: pubsub1_out
 
     - name: Create Public Subnet 2 in Zone 2
       ec2_vpc_subnet:
@@ -47,8 +47,8 @@
           Name: PubSub2
       register: pubsub2_out
 
-    - debug:
-        var: pubsub2_out
+    #- debug:
+    #    var: pubsub2_out
 
     - name: Create Public Subnet 3 in Zone 3
       ec2_vpc_subnet:
@@ -62,8 +62,8 @@
           Name: PubSub3
       register: pubsub3_out
 
-    - debug:
-        var: pubsub3_out
+    #- debug:
+    #   var: pubsub3_out
 
     - name: Create Private Subnet 1 in Zone 1
       ec2_vpc_subnet:
@@ -77,8 +77,8 @@
           Name: PrivSub1
       register: privsub1_out
 
-    - debug:
-        var: privsub1_out
+    #- debug:
+    #    var: privsub1_out
 
     - name: Create Private Subnet 2 in Zone 2
       ec2_vpc_subnet:
@@ -92,8 +92,8 @@
           Name: PrivSub2
       register: privsub2_out
 
-    - debug:
-        var: privsub2_out
+    #- debug:
+    #    var: privsub2_out
 
     - name: Create Private Subnet 3 in Zone 3
       ec2_vpc_subnet:
@@ -107,8 +107,8 @@
           Name: PrivSub3
       register: privsub3_out
 
-    - debug:
-        var: privsub3_out
+    #- debug:
+    #    var: privsub3_out
 
 
       
