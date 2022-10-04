@@ -41,14 +41,14 @@
 
     - name: Creating Bastion host
       ec2_instance:
-        name: Bastion_host
+        name: "Bastion_host"
         key_name: awscicd-key
         region: "{{ region }}"
         instance_type: t2.micro
-        image_id: "{{ bastion_ami }}"
+        image: "{{ bastion_ami }}"
         wait: yes
         wait_timeout: 300
         exact_count: 1
-        security_group: "{{ BastionSG_out.group_id }}"
+        group_id: "{{ BastionSG_out.group_id }}"
         vpc_subnet_id: "{{ pubsub1id }}"
       register: bastionHost_out
