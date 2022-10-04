@@ -20,7 +20,7 @@
       copy:
         content: "{{ key_out.key.private_key }}"
         dest: "./awscicd-key.pem"
-        mode: 0400
+        mode: 0600
       when: key_out.changed
 
     - name: Create security group for bastion host
@@ -57,4 +57,5 @@
           Project: Ansibletesting
           Owner: DevOps Team
         group_id: "{{ BastionSG_out.group_id }}"
+        vpc_subnet_id: "{{ pubsub1id }}"
       register: bastionHost_out
