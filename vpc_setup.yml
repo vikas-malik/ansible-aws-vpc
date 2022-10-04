@@ -30,7 +30,7 @@
         map_public: true
         resource_tags:
           Name: ansible-awscicd1
-        register: pubsub1_out
+      register: pubsub1_out
 
     - debug:
         var: pubsub1_out
