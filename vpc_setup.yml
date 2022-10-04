@@ -110,5 +110,11 @@
     #- debug:
     #    var: privsub3_out
 
-
-      
+    - name: Internet Gateway setup
+      ec2_vpc_igw:
+        vpc_id: "{{ vpcout.vpc.id }}"
+        region: "{{ region }}"
+        state: "{{ state }}"
+        resource_tags:
+         Name: ansibleaws_IGW
+      register: igw_out
