@@ -47,7 +47,7 @@
         instance_type: t2.micro
         image_id: "{{ bastion_ami }}"
         state: present
-        exact_count: 1
+        count: 1
         wait: yes
         wait_timeout: 300
         security_group: "{{ BastionSG_out.group_id }}"
