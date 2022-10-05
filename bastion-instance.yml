@@ -45,10 +45,10 @@
         key_name: awscicd-key
         region: "{{ region }}"
         instance_type: t2.micro
-        image: "{{ bastion_ami }}"
+        image_id: "{{ bastion_ami }}"
+        exact_count: 1
         wait: yes
         wait_timeout: 300
-        exact_count: 1
-        group_id: "{{ BastionSG_out.group_id }}"
+        security_group: "{{ BastionSG_out.group_id }}"
         vpc_subnet_id: "{{ pubsub1id }}"
       register: bastionHost_out
