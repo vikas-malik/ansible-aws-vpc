@@ -46,7 +46,7 @@
         region: "{{ region }}"
         instance_type: t2.micro
         image_id: "{{ bastion_ami }}"
-        state: "{{ state }}"
+        state: present
         eact_count: 1
         wait: yes
         wait_timeout: 300
