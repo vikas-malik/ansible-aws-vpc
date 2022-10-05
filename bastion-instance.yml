@@ -52,4 +52,7 @@
         wait_timeout: 300
         security_group: "{{ BastionSG_out.group_id }}"
         vpc_subnet_id: "{{ pubsub1id }}"
+        tags:
+          Project: ansible aws
+          Owner: DevOps Team 
       register: bastionHost_out
