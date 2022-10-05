@@ -47,8 +47,6 @@
         instance_type: t2.micro
         exact_count: 1
         region: "{{ region }}"
-        network:
-          assign_public_ip: yes
         security_group: "{{ BastionSG_out.group_id }}"
         vpc_subnet_id: "{{ pubsub1id }}"
         tags:
