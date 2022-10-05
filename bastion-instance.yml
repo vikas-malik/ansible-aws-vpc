@@ -40,18 +40,18 @@
         var: BastionSG_out
 
     - name: Creating Bastion host
-      ec2_instance:
-        name: "Bastion_host"
+      amazon.aws.ec2_instance:
+        name: Bastion_host
         key_name: awscicd-key
-        region: "{{ region }}"
-        instance_type: t2.micro
         image_id: "{{ bastion_ami }}"
+        instance_type: t2.micro
         exact_count: 1
-        wait: yes
-        wait_timeout: 300
+        region: "{{ region }}"
+        network:
+          assign_public_ip: yes
         security_group: "{{ BastionSG_out.group_id }}"
         vpc_subnet_id: "{{ pubsub1id }}"
         tags:
-          Project: ansible aws
-          Owner: DevOps Team 
+          Project: ansible-aws
+          Owner: Devops Team
       register: bastionHost_out
