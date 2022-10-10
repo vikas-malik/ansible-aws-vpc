@@ -5,7 +5,7 @@
   gather_facts: false
   tasks:
     - name: Import VPC setup variables
-      ansible.builtin.include_vars: vars/bastion_setup
+      ansible.builtin.include_vars: vars/vpc_setup
 
     - name: Import VPC setup variables
       ansible.builtin.include_vars: vars/output_vars
