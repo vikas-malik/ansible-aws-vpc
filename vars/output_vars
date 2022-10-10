@@ -8,4 +8,8 @@ privsub3id: subnet-0288446f4080b15b2
 igwid: igw-0227fcd27ecd9e95f
 NATGWid: nat-04cf5ed8c9a4e4e67
 pubRTid: rtb-020abb6c5bb76eabf
+<<<<<<< HEAD
 privRTid: rtb-03bb5230ba482fe35
+=======
+privRTid: rtb-03bb5230ba482fe35
+>>>>>>> d837e9a049f25105072c4aee24bf4ea06c2ce540
