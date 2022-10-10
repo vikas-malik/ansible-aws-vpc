@@ -1,8 +1,8 @@
-# ami id for aws amzon linux 2 in region ohio
+# Ami id for aws amzon linux 2 in region ohio
 bastion_ami: ami-0f924dc71d44d23e2
 
 # region for bastion host
 region: us-east-2
 
 # variable for my ip
-MYIP: 202.173.126.203/32
+MYIP: 202.173.126.66/32

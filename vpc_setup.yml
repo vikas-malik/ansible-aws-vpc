@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
     - name: import vpc variables
-      include_vars: vars/vars_vpc
+      include_vars: vars/vpc_setup
 
     - name: create ansible aws vpc
       ec2_vpc_net:
@@ -72,7 +72,6 @@
         az: "{{ zone1 }}"
         state: "{{ state }}"
         cidr: "{{ PrivSub1Cidr }}"
-        map_public: true
         resource_tags:
           Name: PrivSub1
       register: privsub1_out
@@ -87,7 +86,6 @@
         az: "{{ zone2 }}"
         state: "{{ state }}"
         cidr: "{{ PrivSub2Cidr }}"
-        map_public: true
         resource_tags:
           Name: PrivSub2
       register: privsub2_out
@@ -102,7 +100,6 @@
         az: "{{ zone3 }}"
         state: "{{ state }}"
         cidr: "{{ PrivSub3Cidr }}"
-        map_public: true
         resource_tags:
           Name: PrivSub3
       register: privsub3_out
