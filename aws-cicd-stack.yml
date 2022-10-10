@@ -1,0 +1,7 @@
+---
+- name: Setup AWS CICD stack
+  hosts: all
+  connection: local
+  gather_facts: false
+  tasks:
+    
