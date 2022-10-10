@@ -7,7 +7,7 @@
       include_vars: vars/vpc_setup
 
     - name: create ansible aws vpc
-      ec2_vpc_net:
+      amazon.aws.ec2_vpc_net:
         name: "{{ vpc_name }}"
         cidr_block: "{{ vpcCidr }}"
         region: "{{ region }}"
@@ -21,7 +21,7 @@
     #    var: vpcout
 
     - name: Create Public Subnet 1 in Zone 1
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone1 }}"
@@ -36,7 +36,7 @@
     #   var: pubsub1_out
 
     - name: Create Public Subnet 2 in Zone 2
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone2 }}"
@@ -51,7 +51,7 @@
     #    var: pubsub2_out
 
     - name: Create Public Subnet 3 in Zone 3
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone3 }}"
@@ -66,7 +66,7 @@
     #   var: pubsub3_out
 
     - name: Create Private Subnet 1 in Zone 1
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone1 }}"
@@ -80,7 +80,7 @@
     #    var: privsub1_out
 
     - name: Create Private Subnet 2 in Zone 2
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone2 }}"
@@ -94,7 +94,7 @@
     #    var: privsub2_out
 
     - name: Create Private Subnet 3 in Zone 3
-      ec2_vpc_subnet:
+      amazon.aws.ec2_vpc_subnet:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         az: "{{ zone3 }}"
@@ -108,7 +108,7 @@
     #    var: privsub3_out
 
     - name: Internet Gateway setup
-      ec2_vpc_igw:
+      amazon.aws.ec2_vpc_igw:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         state: "{{ state }}"
@@ -117,7 +117,7 @@
       register: igw_out
 
     - name: Setup Public subnet route table
-      ec2_vpc_route_table:
+      amazon.aws.ec2_vpc_route_table:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         tags:
@@ -132,7 +132,7 @@
       register: pubRT_out
 
     - name: Create NAT Gateway and allocate elastic ip to it if it does not exists in aws
-      ec2_vpc_nat_gateway:
+      amazon.aws.ec2_vpc_nat_gateway:
         state: "{{ state }}"
         subnet_id: "{{ pubsub1_out.subnet.id }}"
         wait: yes
@@ -141,7 +141,7 @@
       register: NATGW_out
     
     - name: Set up Private route table
-      ec2_vpc_route_table:
+      amazon.aws.ec2_vpc_route_table:
         vpc_id: "{{ vpcout.vpc.id }}"
         region: "{{ region }}"
         tags:
