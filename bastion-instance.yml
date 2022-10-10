@@ -4,6 +4,9 @@
   connection: local
   gather_facts: false
   tasks:
+    - name: Import vpc_Setup playbook
+      ansible.builtin.import_playbook: vpc_setup.yml
+
     - name: Import VPC setup variables
       include_vars: vars/bastion_setup
 
