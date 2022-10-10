@@ -2,7 +2,7 @@
 vpc_name: aws-cicd-vpc
 
 # VPC range
-vpcCidr: "10.20.0.0/16"
+vpcCidr: "172.20.0.0/16"
 
 # Subnet ranges
 PubSub1Cidr: 172.20.1.0/24
