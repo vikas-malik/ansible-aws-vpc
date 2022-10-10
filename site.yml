@@ -1,0 +1,4 @@
+---
+- ansible.builtin.import_playbook:
+  - vpc_setup.yml
+  - bastion-instance.yml
