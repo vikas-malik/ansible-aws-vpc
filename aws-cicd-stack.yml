@@ -26,7 +26,4 @@
         mode: 0400
       when: key_out.changed
 
-    - name: 
-    
-
     
