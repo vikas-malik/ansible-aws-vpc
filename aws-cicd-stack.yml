@@ -4,4 +4,27 @@
   connection: local
   gather_facts: false
   tasks:
+    - name: Import VPC setup output variables
+      ansible.builtin.include_vars: vars/output_vars
+
+    - name: Import aws cicd ami setup variables
+      ansible.builtin.include_vars: vars/aws-stack-setup
+
+    - name: Import Import VPC setup variables
+      ansible.builtin.include_vars: vars/vpc_setup
+
+    - name: Create aws-cicd-stack key pair
+      amazon.aws.ec2_key:
+        name: awsstack
+        region: "{{ region }}"
+      register: awsstack_out
+    
+    - name: Save private key in file awscicd-key.pem
+      ansible.builtin.copy:
+        content: "{{ key_out.key.private_key }}"
+        dest: "./awsstack.pem"
+        mode: 0400
+      when: key_out.changed
+    
+    
     
