@@ -17,7 +17,7 @@
       amazon.aws.ec2_key:
         name: awsstack
         region: "{{ region }}"
-      register: awsstack_out
+      register: key_out
     
     - name: Save private key in file awscicd-key.pem
       ansible.builtin.copy:
