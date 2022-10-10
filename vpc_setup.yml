@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
     - name: import vpc variables
-      include_vars: vars/vpc_setup
+      ansible.builtin.include_vars: vars/vpc_setup
 
     - name: create ansible aws vpc
       amazon.aws.ec2_vpc_net:
@@ -155,7 +155,7 @@
             gateway_id: "{{ NATGW_out.nat_gateway_id }}"
       register: privRT_out
 
-    - debug:
+    - ansible.builtin.debug:
         var: "{{ item }}"
       loop:
         - vpcout.vpc.id
@@ -170,7 +170,7 @@
         - pubRT_out.route_table.id
         - privRT_out.route_table.id
     
-    - set_fact:
+    - ansible.builtin.set_fact:
         vpcid: "{{ vpcout.vpc.id }}"
         pubsub1id: "{{ pubsub1_out.subnet.id }}"
         pubsub2id: "{{ pubsub2_out.subnet.id }}"
@@ -185,7 +185,7 @@
         cacheable: yes
     
     - name: Create variables files for vpc output
-      copy:
+      ansible.builtin.copy:
         content: "vpcid: {{ vpcout.vpc.id }}\npubsub1id: {{ pubsub1_out.subnet.id }}\npubsub2id: {{ pubsub2_out.subnet.id }}\npubsub3id: {{ pubsub3_out.subnet.id }}\nprivsub1id: {{ privsub1_out.subnet.id }}\nprivsub2id: {{ privsub2_out.subnet.id }}\nprivsub3id: {{ privsub3_out.subnet.id }}\nigwid: {{ igw_out.gateway_id }}\nNATGWid: {{ NATGW_out.nat_gateway_id }}\npubRTid: {{ pubRT_out.route_table.id }}\nprivRTid: {{ privRT_out.route_table.id }}\n"
         dest: vars/output_vars
     
