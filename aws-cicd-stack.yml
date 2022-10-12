@@ -156,13 +156,13 @@
           Name: "db01"
           Project: ansible-awsstack
           Owner: Devops Team
-      register: db01_out
 
-    - name: Gather information about any instance with a tag key Name and value Example
+    - name: Gather information about db01 instance
       amazon.aws.ec2_instance_info:
         region: "{{ region }}"
         filters:
           "tag:Name": db01
+      register: db01_out
     
 
 
