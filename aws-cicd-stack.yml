@@ -50,7 +50,7 @@
           - proto: tcp
             from_port: 22
             to_port: 22
-            group_id: "{{ BastionSGID }}"
+            group_id: "{{ BastionSGid }}"
           
           - proto: tcp
             from_port: 80

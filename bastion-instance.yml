@@ -55,8 +55,8 @@
           Owner: Devops Team
       register: bastionHost_out
     
-    - name: Insert/Update BastionSGID in vars/output_vars
+    - name: Insert/Update BastionSGid in vars/output_vars
       ansible.builtin.blockinfile:
         path: vars/output_vars
         block: |
-          BastionSGId: {{BastionSG_out.group_id}}
+          BastionSGid: {{BastionSG_out.group_id}}
