@@ -67,7 +67,7 @@
         purge_rules: no
         rules:
           - proto: all
-            group_id: "{{ awsELBSG_out.group_id }}"
+            group_id: "{{ awscicdstack_out.group_id }}"
     
     - name: Creating Nginx web01
       amazon.aws.ec2_instance:
