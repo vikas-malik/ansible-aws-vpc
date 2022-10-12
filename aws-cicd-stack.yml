@@ -189,7 +189,7 @@
       register: db01_out
 
     - ansible.builtin.debug:
-        var: web01_out.instances[0].instance_id
+        var: web01_out
     
     - name: create Elastic Load Balancer
       amazon.aws.elb_classic_lb:
