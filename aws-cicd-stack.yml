@@ -191,23 +191,24 @@
     - ansible.builtin.debug:
         var: web01_out
     
-    - amazon.aws.elb_classic_lb:
-      name: "aws-cicd-elb"
-      state: "{{ state }}"
-      region: "{{ region }}"
-      instance_id: 
-        - "{{ web01_out.instances.instance_id }}"
-      purge_instances_id: true
-      security_group_ids: 
-        - "{{ awsELBSG_out.group_id }}"
-      subnets:
-        - "{{ pubsub1id }}"
-        - "{{ pubsub2id }}"
-        - "{{ pubsub3id }}"
-      listeners:
-        - protocol: http
-          load_balancer_port: 80
-          instance_port: 80
+    - name: create Elastic Load Balancer
+      amazon.aws.elb_classic_lb:
+        name: "aws-cicd-elb"
+        state: "{{ state }}"
+        region: "{{ region }}"
+        instance_id: 
+          - "{{ web01_out.instances.instance_id }}"
+        purge_instances_id: true
+        security_group_ids: 
+          - "{{ awsELBSG_out.group_id }}"
+        subnets:
+          - "{{ pubsub1id }}"
+          - "{{ pubsub2id }}"
+          - "{{ pubsub3id }}"
+        listeners:
+          - protocol: http
+            load_balancer_port: 80
+            instance_port: 80
     
     - name: Insert/Update host IP's and name in file provision-stack/group_vars/hostsip
       ansible.builtin.blockinfile:
