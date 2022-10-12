@@ -196,9 +196,9 @@
         name: "aws-cicd-elb"
         state: "{{ state }}"
         region: "{{ region }}"
-        instance_id: 
+        instance_ids: 
           - "{{ web01_out.instances.instance_id }}"
-        purge_instances_id: true
+        purge_instances_ids: true
         security_group_ids: 
           - "{{ awsELBSG_out.group_id }}"
         subnets:
