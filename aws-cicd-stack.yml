@@ -158,8 +158,10 @@
           Owner: Devops Team
       register: db01_out
 
-    - ansible.builtin.debug:
-        var: db01_out
+    - name: Gather information about any instance with a tag key Name and value Example
+      amazon.aws.ec2_instance_info:
+        filters:
+          "tag:Name": db01
     
 
 
