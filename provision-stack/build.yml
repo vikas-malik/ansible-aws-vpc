@@ -12,7 +12,7 @@
     - name: Install git, jdk and maven
       ansible.builtin.apt:
         name: "{{ item }}"
-        state: absent
+        state: present
         update_cache: yes
       loop:
         - git
