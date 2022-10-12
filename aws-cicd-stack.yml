@@ -26,4 +26,49 @@
         mode: 0400
       when: key_out.changed
 
+    - name: Create Security Group for Load Balancer
+      amazon.aws.ec2_group:
+        name: awsELB-SG
+        description: Allow port 80 from anywhere IPv4
+        region: "{{ region }}"
+        vpc_id: "{{ vpcid }}"
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+      register: awsELBSG_out
+
+    - name: Create Security Group for AWS CICD stack
+      amazon.aws.ec2_group:
+        name: awscicdstack-SG
+        description: Allow port 22 from bastion-host SG and port 80 anywhere IPv4 awsELB-SG
+        region: "{{ region }}"
+        vpc_id: "{{ vpcid }}"
+        purge_rules: no
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: "{{ BastionSGID }}"
+          
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            group_id: "{{ awsELBSG_out.group_id }}"
+      register: awscicdstack_out
+
+    - name: Update awscicdstack-SG to talk to its own security group
+      amazon.aws.ec2_group:
+        name: awscicdstack-SG
+        description: Allow all port to communicate within this group.
+        region: "{{ region }}"
+        vpc_id: "{{ vpcid }}"
+        purge_rules: no
+        rules:
+          - proto: all
+            group_id: "{{ awsELBSG_out.group_id }}"
+            
+
+
     

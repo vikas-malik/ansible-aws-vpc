@@ -53,3 +53,10 @@
           Project: ansible-aws
           Owner: Devops Team
       register: bastionHost_out
+    
+    - name: Insert/Update BastionSGID in vars/output_vars
+      ansible.builtin.blockinfile:
+        path: vars/output_vars
+        backup: yes
+        block:  |
+          BastionSGID: {{ BastionSG_out.group.id }}
