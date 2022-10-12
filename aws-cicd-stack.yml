@@ -198,7 +198,7 @@
         region: "{{ region }}"
         instance_ids: 
           - "{{ web01_out.instances[0].instance_id }}"
-        purge_instances_ids: true
+        purge_instance_ids: true
         security_group_ids: 
           - "{{ awsELBSG_out.group_id }}"
         subnets:
