@@ -88,6 +88,12 @@
           Name: "web01"
           Project: ansible-awsstack
           Owner: Devops Team
+
+    - name: Gather information about web01 instance
+      amazon.aws.ec2_instance_info:
+        region: "{{ region }}"
+        filters:
+          "tag:Name": web01
       register: web01_out
 
     - name: Creating Tomcat app01
@@ -105,6 +111,12 @@
           Name: "app01"
           Project: ansible-awsstack
           Owner: Devops Team
+    
+    - name: Gather information about app01 instance
+      amazon.aws.ec2_instance_info:
+        region: "{{ region }}"
+        filters:
+          "tag:Name": app01
       register: app01_out
 
     - name: Creating memcached1 mc01
@@ -122,6 +134,12 @@
           Name: "mc01"
           Project: ansible-awsstack
           Owner: Devops Team
+    
+    - name: Gather information about mc01 instance
+      amazon.aws.ec2_instance_info:
+        region: "{{ region }}"
+        filters:
+          "tag:Name": mc01
       register: mc01_out
     
     - name: Creating RabbitmQ rmq01
@@ -139,6 +157,12 @@
           Name: "rmq01"
           Project: ansible-awsstack
           Owner: Devops Team
+
+    - name: Gather information about rmq01 instance
+      amazon.aws.ec2_instance_info:
+        region: "{{ region }}"
+        filters:
+          "tag:Name": rmq01
       register: rmq01_out
 
     - name: Creating MySql db01
@@ -165,8 +189,83 @@
       register: db01_out
 
     - ansible.builtin.debug:
-        var: db01_out
+        var: web01_out
     
+    - amazon.aws.elb_classic_lb:
+      name: "aws-cicd-elb"
+      state: "{{ state }}"
+      region: "{{ region }}"
+      instance_id: 
+        - "{{ web01_out.instances.instance_id }}"
+      purge_instances_id: true
+      security_group_ids: 
+        - "{{ awsELBSG_out.group_id }}"
+      subnets:
+        - "{{ pubsub1id }}"
+        - "{{ pubsub2id }}"
+        - "{{ pubsub3id }}"
+      listeners:
+        - protocol: http
+          load_balancer_port: 80
+          instance_port: 80
+    
+    - name: Insert/Update host IP's and name in file provision-stack/group_vars/hostsip
+      ansible.builtin.blockinfile:
+        path: provision-stack/group_vars/hostsip
+        block: |
+          web01_ip: {{ web01_out.instances.network_interfaces.private_ip_address }}
+          app01_ip: {{ app01_out.instances.network_interfaces.private_ip_address }}
+          mc01_ip: {{ mc01_out.instances.network_interfaces.private_ip_address }}
+          rmq01_ip: {{ rmq01_out.instances.network_interfaces.private_ip_address }}
+          db01_ip: {{ db01_out.instances.network_interfaces.private_ip_address }}
+    
+    - name: Copy login key to provision-stack directory
+      ansible.builtin.copy:
+        src: awsstack.pem
+        dest: provision-stack/awsstack.pem
+        mode: 0400
+
+    - name: Insert/Update host IP's and name in file provision-stack/group_vars/hostsip
+      ansible.builtin.blockinfile:
+        path: provision-stack/inventory-awscicdstack
+        block: |
+          web01_ip: {{ web01_out.instances.network_interfaces.private_ip_address }}
+          app01_ip: {{ app01_out.instances.network_interfaces.private_ip_address }}
+          mc01_ip: {{ mc01_out.instances.network_interfaces.private_ip_address }}
+          rmq01_ip: {{ rmq01_out.instances.network_interfaces.private_ip_address }}
+          db01_ip: {{ db01_out.instances.network_interfaces.private_ip_address }}
+          controller ansible_host: 127.0.0.1 ansible_connection=local
+
+          [websrvgrp]
+          web01
+
+          [appsrvgrp]
+          app01
+
+          [mcsrvgrp]
+          mc01
+
+          [rmqsrvgrp]
+          rmq01
+
+          [dbsrvgrp]
+          db01
+
+          [control]
+          controller
+
+          [stack_inst:children]
+          websrvgrp
+          appsrvgrp
+          mcsrvgrp
+          rmqsrvgrp
+          dbsrvgrp
+
+          [stack_inst:vars]
+          ansible_user=ubuntu
+          ansible_ssh_private_key_file=awscicd.pem
+          #ansible_python_interpreter=usr/bin/python3
+
 
 
 
