@@ -2,4 +2,4 @@ ngnix_ami: ami-097a2df4ac947655f
 tomcat_ami: ami-097a2df4ac947655f
 memcached_ami: ami-097a2df4ac947655f
 rmq_ami: ami-097a2df4ac947655f
-mysql_ami: ami-097a2df4ac947655f
+db_ami: ami-097a2df4ac947655f
