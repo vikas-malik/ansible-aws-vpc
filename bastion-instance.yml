@@ -59,4 +59,4 @@
       ansible.builtin.blockinfile:
         path: vars/output_vars
         block: |
-          BastionSGid: {{BastionSG_out.group_id}}
+          BastionSGId: {{BastionSG_out.group_id}}
