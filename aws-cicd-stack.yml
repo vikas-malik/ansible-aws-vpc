@@ -73,7 +73,7 @@
       amazon.aws.ec2_instance:
         name: web01
         key_name: awsstack
-        image_id: "{{ nginx_ami }}"
+        image_id: "{{ ngnix_ami }}"
         instance_type: t2.micro
         exact_count: 1
         region: "{{ region }}"
