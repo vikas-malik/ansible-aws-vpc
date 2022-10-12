@@ -59,5 +59,5 @@
       ansible.builtin.blockinfile:
         path: vars/output_vars
         backup: yes
-        block:  |
+        block: |
           BastionSGID: {{ BastionSG_out.group.id }}
