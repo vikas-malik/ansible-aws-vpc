@@ -68,7 +68,97 @@
         rules:
           - proto: all
             group_id: "{{ awsELBSG_out.group_id }}"
-            
+    
+    - name: Creating Nginx web01
+      amazon.aws.ec2_instance:
+        name: web01
+        key_name: awsstack
+        image_id: "{{ nginx_ami }}"
+        instance_type: t2.micro
+        exact_count: 1
+        region: "{{ region }}"
+        security_group: "{{ awscicdstack_out.group_id }}"
+        vpc_subnet_id: "{{ privsub1id }}"
+        wait: yes
+        tags:
+          Name: "web01"
+          Project: ansible-awsstack
+          Owner: Devops Team
+      register: web01_out
+
+    - name: Creating Tomcat app01
+      amazon.aws.ec2_instance:
+        name: app01
+        key_name: awsstack
+        image_id: "{{ tomcat_ami }}"
+        instance_type: t2.micro
+        exact_count: 1
+        region: "{{ region }}"
+        security_group: "{{ awscicdstack_out.group_id }}"
+        vpc_subnet_id: "{{ privsub1id }}"
+        wait: yes
+        tags:
+          Name: "app01"
+          Project: ansible-awsstack
+          Owner: Devops Team
+      register: app01_out
+
+    - name: Creating memcached1 mc01
+      amazon.aws.ec2_instance:
+        name: mc01
+        key_name: awsstack
+        image_id: "{{ memcached_ami }}"
+        instance_type: t2.micro
+        exact_count: 1
+        region: "{{ region }}"
+        security_group: "{{ awscicdstack_out.group_id }}"
+        vpc_subnet_id: "{{ privsub1id }}"
+        wait: yes
+        tags:
+          Name: "mc01"
+          Project: ansible-awsstack
+          Owner: Devops Team
+      register: mc01_out
+    
+    - name: Creating RabbitmQ rmq01
+      amazon.aws.ec2_instance:
+        name: rmq01
+        key_name: awsstack
+        image_id: "{{ rmq_ami }}"
+        instance_type: t2.micro
+        exact_count: 1
+        region: "{{ region }}"
+        security_group: "{{ awscicdstack_out.group_id }}"
+        vpc_subnet_id: "{{ privsub1id }}"
+        wait: yes
+        tags:
+          Name: "rmq01"
+          Project: ansible-awsstack
+          Owner: Devops Team
+      register: rmq01_out
+
+    - name: Creating MySql db01
+      amazon.aws.ec2_instance:
+        name: db01
+        key_name: awsstack
+        image_id: "{{ db_ami }}"
+        instance_type: t2.micro
+        exact_count: 1
+        region: "{{ region }}"
+        security_group: "{{ awscicdstack_out.group_id }}"
+        vpc_subnet_id: "{{ privsub1id }}"
+        wait: yes
+        tags:
+          Name: "db01"
+          Project: ansible-awsstack
+          Owner: Devops Team
+      register: db01_out
+
+    - ansible.builtin.debug:
+      var: db01_out
+    
+
+
 
 
     

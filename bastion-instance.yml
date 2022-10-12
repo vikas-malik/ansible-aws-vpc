@@ -49,6 +49,7 @@
         region: "{{ region }}"
         security_group: "{{ BastionSG_out.group_id }}"
         vpc_subnet_id: "{{ pubsub1id }}"
+        wait: yes
         tags:
           Project: ansible-aws
           Owner: Devops Team
