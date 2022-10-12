@@ -189,7 +189,7 @@
       register: db01_out
 
     - ansible.builtin.debug:
-        var: web01_out
+        var: web01_out.instances.instance_id
     
     - name: create Elastic Load Balancer
       amazon.aws.elb_classic_lb:
@@ -230,11 +230,11 @@
       ansible.builtin.blockinfile:
         path: provision-stack/inventory-awscicdstack
         block: |
-          web01_ip: {{ web01_out.instances.network_interfaces.private_ip_address }}
-          app01_ip: {{ app01_out.instances.network_interfaces.private_ip_address }}
-          mc01_ip: {{ mc01_out.instances.network_interfaces.private_ip_address }}
-          rmq01_ip: {{ rmq01_out.instances.network_interfaces.private_ip_address }}
-          db01_ip: {{ db01_out.instances.network_interfaces.private_ip_address }}
+          web01_ip: {{ web01_out.instances.private_ip_address }}
+          app01_ip: {{ app01_out.instances.private_ip_address }}
+          mc01_ip: {{ mc01_out.instances.private_ip_address }}
+          rmq01_ip: {{ rmq01_out.instances.private_ip_address }}
+          db01_ip: {{ db01_out.instances.private_ip_address }}
           controller ansible_host: 127.0.0.1 ansible_connection=local
 
           [websrvgrp]
