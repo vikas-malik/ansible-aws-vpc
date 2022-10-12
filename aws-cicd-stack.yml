@@ -197,7 +197,7 @@
         state: "{{ state }}"
         region: "{{ region }}"
         instance_ids: 
-          - "{{ web01_out.instances.instance_id }}"
+          - "{{ web01_out.instances[0].instance_id }}"
         purge_instances_ids: true
         security_group_ids: 
           - "{{ awsELBSG_out.group_id }}"
@@ -214,11 +214,11 @@
       ansible.builtin.blockinfile:
         path: provision-stack/group_vars/hostsip
         block: |
-          web01_ip: {{ web01_out.instances.private_ip_address }}
-          app01_ip: {{ app01_out.instances.private_ip_address }}
-          mc01_ip: {{ mc01_out.instances.private_ip_address }}
-          rmq01_ip: {{ rmq01_out.instances.private_ip_address }}
-          db01_ip: {{ db01_out.instances.private_ip_address }}
+          web01_ip: {{ web01_out.instances[0].private_ip_address }}
+          app01_ip: {{ app01_out.instances[0].private_ip_address }}
+          mc01_ip: {{ mc01_out.instances[0].private_ip_address }}
+          rmq01_ip: {{ rmq01_out.instances[0].private_ip_address }}
+          db01_ip: {{ db01_out.instances[0].private_ip_address }}
     
     - name: Copy login key to provision-stack directory
       ansible.builtin.copy:
@@ -230,11 +230,11 @@
       ansible.builtin.blockinfile:
         path: provision-stack/inventory-awscicdstack
         block: |
-          web01_ip: {{ web01_out.instances.private_ip_address }}
-          app01_ip: {{ app01_out.instances.private_ip_address }}
-          mc01_ip: {{ mc01_out.instances.private_ip_address }}
-          rmq01_ip: {{ rmq01_out.instances.private_ip_address }}
-          db01_ip: {{ db01_out.instances.private_ip_address }}
+          web01_ip: {{ web01_out.instances[0].private_ip_address }}
+          app01_ip: {{ app01_out.instances[0].private_ip_address }}
+          mc01_ip: {{ mc01_out.instances[0].private_ip_address }}
+          rmq01_ip: {{ rmq01_out.instances[0].private_ip_address }}
+          db01_ip: {{ db01_out.instances[0].private_ip_address }}
           controller ansible_host: 127.0.0.1 ansible_connection=local
 
           [websrvgrp]
@@ -266,9 +266,3 @@
           ansible_user=ubuntu
           ansible_ssh_private_key_file=awscicd.pem
           #ansible_python_interpreter=usr/bin/python3
-
-
-
-
-
-    
