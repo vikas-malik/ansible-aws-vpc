@@ -16,7 +16,7 @@
         update_cache: yes
       loop:
         - git
-        - openjdk-11-jdk
+        - openjdk-8-jdk
         - maven
 
     - name: Clone source code from github
