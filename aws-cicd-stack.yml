@@ -32,6 +32,8 @@
         description: Allow port 80 from anywhere IPv4
         region: "{{ region }}"
         vpc_id: "{{ vpcid }}"
+        tags:
+          Name: "awsELB-SG"
         rules:
           - proto: tcp
             from_port: 80
@@ -45,6 +47,8 @@
         description: Allow port 22 from bastion-host SG and port 80 anywhere IPv4 awsELB-SG
         region: "{{ region }}"
         vpc_id: "{{ vpcid }}"
+        tags:
+          Name: "awscicdstack-SG"
         purge_rules: no
         rules:
           - proto: tcp
