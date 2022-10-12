@@ -12,11 +12,11 @@
     - name: Install git, jdk and maven
       ansible.builtin.apt:
         name: "{{ item }}"
-        state: present
+        state: absent
         update_cache: yes
       loop:
         - git
-        - openjdk-11-jdk
+        - openjdk-8-jdk
         - maven
 
     - name: Clone source code from github
