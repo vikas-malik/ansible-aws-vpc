@@ -62,3 +62,53 @@ is reserved to provide a port.
 2022-10-13 11:55:22,639 p=6868 u=ubuntu n=ansible | ok: [localhost]
 2022-10-13 11:55:22,656 p=6868 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
 2022-10-13 11:55:22,656 p=6868 u=ubuntu n=ansible | localhost                  : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2022-10-13 12:00:18,736 p=8917 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   mapping values are not allowed in this context  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-
+stack/inventory-awscicdstack': line 6, column 18, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  db01 ansible_host=10.20.4.44
+^ here  There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+
+2022-10-13 12:00:18,736 p=8917 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack:7: Expected
+key=value host variable assignment, got: ansible_host:
+
+2022-10-13 12:00:18,737 p=8917 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 12:00:18,737 p=8917 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 12:00:18,836 p=8917 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all instances in the stack] ****************************************************************************************************************************
+2022-10-13 12:00:18,846 p=8917 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 12:01:04,969 p=8917 u=ubuntu n=ansible | fatal: [web01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.149 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:01:04,977 p=8917 u=ubuntu n=ansible | fatal: [app01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.91 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:01:04,990 p=8917 u=ubuntu n=ansible | fatal: [mc01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.126 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:01:05,006 p=8917 u=ubuntu n=ansible | fatal: [rmq01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.138 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:01:05,013 p=8917 u=ubuntu n=ansible | fatal: [db01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.44 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:01:05,015 p=8917 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 12:01:05,016 p=8917 u=ubuntu n=ansible | app01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:01:05,016 p=8917 u=ubuntu n=ansible | db01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:01:05,016 p=8917 u=ubuntu n=ansible | mc01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:01:05,016 p=8917 u=ubuntu n=ansible | rmq01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:01:05,016 p=8917 u=ubuntu n=ansible | web01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:01:57,854 p=8949 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   mapping values are not allowed in this context  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-
+stack/inventory-awscicdstack': line 6, column 18, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  db01 ansible_host=10.20.4.44
+^ here  There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+
+2022-10-13 12:01:57,854 p=8949 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack:7: Expected
+key=value host variable assignment, got: ansible_host:
+
+2022-10-13 12:01:57,854 p=8949 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 12:01:57,855 p=8949 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 12:01:57,952 p=8949 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all instances in the stack] ****************************************************************************************************************************
+2022-10-13 12:01:57,962 p=8949 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 12:02:44,074 p=8949 u=ubuntu n=ansible | fatal: [web01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.149 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:02:44,100 p=8949 u=ubuntu n=ansible | fatal: [app01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.91 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:02:44,109 p=8949 u=ubuntu n=ansible | fatal: [mc01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.126 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:02:44,133 p=8949 u=ubuntu n=ansible | fatal: [rmq01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.138 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:02:44,137 p=8949 u=ubuntu n=ansible | fatal: [db01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 10.20.4.44 port 22: Connection timed out", "unreachable": true}
+2022-10-13 12:02:44,138 p=8949 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 12:02:44,139 p=8949 u=ubuntu n=ansible | app01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:02:44,139 p=8949 u=ubuntu n=ansible | db01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:02:44,139 p=8949 u=ubuntu n=ansible | mc01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:02:44,139 p=8949 u=ubuntu n=ansible | rmq01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:02:44,139 p=8949 u=ubuntu n=ansible | web01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
