@@ -235,7 +235,7 @@
           mc01 ansible_host={{ mc01_out.instances[0].private_ip_address }}
           rmq01 ansible_host={{ rmq01_out.instances[0].private_ip_address }}
           db01 ansible_host={{ db01_out.instances[0].private_ip_address }}
-          controller ansible_host: 127.0.0.1 ansible_connection=local
+          controller ansible_host=127.0.0.1 ansible_connection=local
 
           [websrvgrp]
           web01
