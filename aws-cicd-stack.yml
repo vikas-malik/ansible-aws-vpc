@@ -230,11 +230,11 @@
       ansible.builtin.blockinfile:
         path: provision-stack/inventory-awscicdstack
         block: |
-          web01_ip: {{ web01_out.instances[0].private_ip_address }}
-          app01_ip: {{ app01_out.instances[0].private_ip_address }}
-          mc01_ip: {{ mc01_out.instances[0].private_ip_address }}
-          rmq01_ip: {{ rmq01_out.instances[0].private_ip_address }}
-          db01_ip: {{ db01_out.instances[0].private_ip_address }}
+          web01 ansible_host={{ web01_out.instances[0].private_ip_address }}
+          app01 ansible_host={{ app01_out.instances[0].private_ip_address }}
+          mc01 ansible_host={{ mc01_out.instances[0].private_ip_address }}
+          rmq01 ansible_host={{ rmq01_out.instances[0].private_ip_address }}
+          db01 ansible_host={{ db01_out.instances[0].private_ip_address }}
           controller ansible_host: 127.0.0.1 ansible_connection=local
 
           [websrvgrp]
