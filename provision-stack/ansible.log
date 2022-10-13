@@ -1,0 +1,64 @@
+2022-10-13 11:51:01,682 p=2768 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   could not find expected ':'  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-stack/inventory-
+awscicdstack': line 10, column 1, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  [websrvgrp] web01 ^ here
+
+2022-10-13 11:51:01,683 p=2768 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: Invalid host pattern 'web01_ip:' supplied, ending in ':' is not allowed, this character
+is reserved to provide a port.
+
+2022-10-13 11:51:01,683 p=2768 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 11:51:01,683 p=2768 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 11:51:01,687 p=2768 u=ubuntu n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2022-10-13 11:51:01,787 p=2768 u=ubuntu n=ansible | PLAY [Generate artifact, copy artifact and sql file to directory] *****************************************************************************************************************************************
+2022-10-13 11:51:01,797 p=2768 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 11:51:03,204 p=2768 u=ubuntu n=ansible | ok: [localhost]
+2022-10-13 11:51:03,214 p=2768 u=ubuntu n=ansible | TASK [Update all packages] ********************************************************************************************************************************************************************************
+2022-10-13 11:51:04,946 p=2768 u=ubuntu n=ansible | ok: [localhost]
+2022-10-13 11:51:04,962 p=2768 u=ubuntu n=ansible | TASK [Install git, jdk and maven] *************************************************************************************************************************************************************************
+2022-10-13 11:51:06,833 p=2768 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2022-10-13 11:51:39,031 p=2768 u=ubuntu n=ansible | changed: [localhost] => (item=openjdk-8-jdk)
+2022-10-13 11:51:48,474 p=2768 u=ubuntu n=ansible | changed: [localhost] => (item=maven)
+2022-10-13 11:51:48,488 p=2768 u=ubuntu n=ansible | TASK [Clone source code from github] **********************************************************************************************************************************************************************
+2022-10-13 11:51:52,977 p=2768 u=ubuntu n=ansible | changed: [localhost]
+2022-10-13 11:51:52,990 p=2768 u=ubuntu n=ansible | TASK [Running mvn install command to build the artifact] **************************************************************************************************************************************************
+2022-10-13 11:52:40,302 p=2768 u=ubuntu n=ansible | changed: [localhost]
+2022-10-13 11:52:40,323 p=2768 u=ubuntu n=ansible | TASK [Copy artifact to files directory] *******************************************************************************************************************************************************************
+2022-10-13 11:52:41,544 p=2768 u=ubuntu n=ansible | changed: [localhost] => (item=/home/ubuntu/ansible-aws-vpc/provision-stack/Vprofile-repo/target/vprofile-v2.war)
+2022-10-13 11:52:41,556 p=2768 u=ubuntu n=ansible | TASK [Copy sql file to files directory] *******************************************************************************************************************************************************************
+2022-10-13 11:52:42,010 p=2768 u=ubuntu n=ansible | changed: [localhost]
+2022-10-13 11:52:42,027 p=2768 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 11:52:42,027 p=2768 u=ubuntu n=ansible | localhost                  : ok=7    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 11:55:11,465 p=6868 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   could not find expected ':'  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-stack/inventory-
+awscicdstack': line 10, column 1, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  [websrvgrp] web01 ^ here
+
+2022-10-13 11:55:11,466 p=6868 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: Invalid host pattern 'web01_ip:' supplied, ending in ':' is not allowed, this character
+is reserved to provide a port.
+
+2022-10-13 11:55:11,466 p=6868 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 11:55:11,466 p=6868 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 11:55:11,473 p=6868 u=ubuntu n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2022-10-13 11:55:11,671 p=6868 u=ubuntu n=ansible | PLAY [Generate artifact, copy artifact and sql file to directory] *****************************************************************************************************************************************
+2022-10-13 11:55:11,689 p=6868 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 11:55:13,104 p=6868 u=ubuntu n=ansible | ok: [localhost]
+2022-10-13 11:55:13,114 p=6868 u=ubuntu n=ansible | TASK [Update all packages] ********************************************************************************************************************************************************************************
+2022-10-13 11:55:14,763 p=6868 u=ubuntu n=ansible | ok: [localhost]
+2022-10-13 11:55:14,780 p=6868 u=ubuntu n=ansible | TASK [Install git, jdk and maven] *************************************************************************************************************************************************************************
+2022-10-13 11:55:16,646 p=6868 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2022-10-13 11:55:18,455 p=6868 u=ubuntu n=ansible | ok: [localhost] => (item=openjdk-8-jdk)
+2022-10-13 11:55:20,255 p=6868 u=ubuntu n=ansible | ok: [localhost] => (item=maven)
+2022-10-13 11:55:20,266 p=6868 u=ubuntu n=ansible | TASK [Clone source code from github] **********************************************************************************************************************************************************************
+2022-10-13 11:55:21,132 p=6868 u=ubuntu n=ansible | ok: [localhost]
+2022-10-13 11:55:21,143 p=6868 u=ubuntu n=ansible | TASK [Running mvn install command to build the artifact] **************************************************************************************************************************************************
+2022-10-13 11:55:21,158 p=6868 u=ubuntu n=ansible | skipping: [localhost]
+2022-10-13 11:55:21,167 p=6868 u=ubuntu n=ansible | TASK [Copy artifact to files directory] *******************************************************************************************************************************************************************
+2022-10-13 11:55:22,127 p=6868 u=ubuntu n=ansible | ok: [localhost] => (item=/home/ubuntu/ansible-aws-vpc/provision-stack/Vprofile-repo/target/vprofile-v2.war)
+2022-10-13 11:55:22,138 p=6868 u=ubuntu n=ansible | TASK [Copy sql file to files directory] *******************************************************************************************************************************************************************
+2022-10-13 11:55:22,639 p=6868 u=ubuntu n=ansible | ok: [localhost]
+2022-10-13 11:55:22,656 p=6868 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 11:55:22,656 p=6868 u=ubuntu n=ansible | localhost                  : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
