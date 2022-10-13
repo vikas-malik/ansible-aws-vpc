@@ -1,0 +1,23 @@
+---
+- name: Deploy Sql gile on accounts database
+  hosts: dbsrvgrp
+  gather_facts: false
+  tasks:
+    - name: Copy SQL to dbsrv
+      ansible.builtin.copy:
+        src: files/db_backup.sql
+        dest: /tmp/db_backup.sql
+      tags:
+        - deploy
+    
+    - name: Restoring database
+      ansible.builtin.mysql_db:
+        name: accounts
+        login_user: "{{ dbuser }}"
+        login_password: "{{ dbpass }}"
+        state: import
+        target: /tmp/db_backup.sql
+      notify:
+        - Restart mysql
+      tags:
+        - deploy
