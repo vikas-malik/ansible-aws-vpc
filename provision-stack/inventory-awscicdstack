@@ -4,7 +4,7 @@ app01 ansible_host=10.20.4.91
 mc01 ansible_host=10.20.4.126
 rmq01 ansible_host=10.20.4.138
 db01 ansible_host=10.20.4.44
-controller ansible_host: 127.0.0.1 ansible_connection=local
+controller ansible_host=127.0.0.1 ansible_connection=local
 
 [websrvgrp]
 web01
@@ -33,6 +33,6 @@ dbsrvgrp
 
 [stack_inst:vars]
 ansible_user=ubuntu
-ansible_ssh_private_key_file=awscicd.pem
+ansible_ssh_private_key_file=awsstack.pem
 #ansible_python_interpreter=usr/bin/python3
 # END ANSIBLE MANAGED BLOCK

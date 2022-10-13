@@ -112,3 +112,163 @@ key=value host variable assignment, got: ansible_host:
 2022-10-13 12:02:44,139 p=8949 u=ubuntu n=ansible | mc01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 2022-10-13 12:02:44,139 p=8949 u=ubuntu n=ansible | rmq01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 2022-10-13 12:02:44,139 p=8949 u=ubuntu n=ansible | web01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:30:42,359 p=947 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   mapping values are not allowed in this context  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-
+stack/inventory-awscicdstack': line 6, column 18, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  db01 ansible_host=10.20.4.44
+^ here  There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+
+2022-10-13 12:30:42,450 p=947 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack:7: Expected
+key=value host variable assignment, got: ansible_host:
+
+2022-10-13 12:30:42,450 p=947 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 12:30:42,450 p=947 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 12:30:43,774 p=947 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all instances in the stack] ****************************************************************************************************************************
+2022-10-13 12:30:43,889 p=947 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 12:30:45,148 p=947 u=ubuntu n=ansible | fatal: [web01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.149: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:30:45,203 p=947 u=ubuntu n=ansible | fatal: [mc01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.126: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:30:45,212 p=947 u=ubuntu n=ansible | fatal: [app01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.91: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:30:45,254 p=947 u=ubuntu n=ansible | fatal: [rmq01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.138: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:30:45,257 p=947 u=ubuntu n=ansible | fatal: [db01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.44: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:30:45,259 p=947 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 12:30:45,259 p=947 u=ubuntu n=ansible | app01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:30:45,259 p=947 u=ubuntu n=ansible | db01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:30:45,259 p=947 u=ubuntu n=ansible | mc01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:30:45,259 p=947 u=ubuntu n=ansible | rmq01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:30:45,259 p=947 u=ubuntu n=ansible | web01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:32:47,920 p=1923 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   mapping values are not allowed in this context  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-
+stack/inventory-awscicdstack': line 6, column 18, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  db01 ansible_host=10.20.4.44
+^ here  There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+
+2022-10-13 12:32:47,921 p=1923 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack:7: Expected
+key=value host variable assignment, got: ansible_host:
+
+2022-10-13 12:32:47,921 p=1923 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 12:32:47,921 p=1923 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 12:32:48,021 p=1923 u=ubuntu n=ansible | PLAY [Generate artifact, copy artifact and sql file to directory] *****************************************************************************************************************************************
+2022-10-13 12:32:48,030 p=1923 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 12:32:50,316 p=1923 u=ubuntu n=ansible | ok: [localhost]
+2022-10-13 12:32:50,326 p=1923 u=ubuntu n=ansible | TASK [Update all packages] ********************************************************************************************************************************************************************************
+2022-10-13 12:33:18,750 p=1923 u=ubuntu n=ansible | ok: [localhost]
+2022-10-13 12:33:18,767 p=1923 u=ubuntu n=ansible | TASK [Install git, jdk and maven] *************************************************************************************************************************************************************************
+2022-10-13 12:33:27,145 p=1923 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2022-10-13 12:33:29,054 p=1923 u=ubuntu n=ansible | ok: [localhost] => (item=openjdk-8-jdk)
+2022-10-13 12:33:30,821 p=1923 u=ubuntu n=ansible | ok: [localhost] => (item=maven)
+2022-10-13 12:33:30,831 p=1923 u=ubuntu n=ansible | TASK [Clone source code from github] **********************************************************************************************************************************************************************
+2022-10-13 12:33:36,488 p=1923 u=ubuntu n=ansible | changed: [localhost]
+2022-10-13 12:33:36,499 p=1923 u=ubuntu n=ansible | TASK [Running mvn install command to build the artifact] **************************************************************************************************************************************************
+2022-10-13 12:34:35,784 p=1923 u=ubuntu n=ansible | changed: [localhost]
+2022-10-13 12:34:35,795 p=1923 u=ubuntu n=ansible | TASK [Copy artifact to files directory] *******************************************************************************************************************************************************************
+2022-10-13 12:34:37,123 p=1923 u=ubuntu n=ansible | changed: [localhost] => (item=/home/ubuntu/ansible-aws-vpc/provision-stack/Vprofile-repo/target/vprofile-v2.war)
+2022-10-13 12:34:37,134 p=1923 u=ubuntu n=ansible | TASK [Copy sql file to files directory] *******************************************************************************************************************************************************************
+2022-10-13 12:34:37,579 p=1923 u=ubuntu n=ansible | changed: [localhost]
+2022-10-13 12:34:37,595 p=1923 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 12:34:37,595 p=1923 u=ubuntu n=ansible | localhost                  : ok=7    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:36:03,342 p=3137 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   mapping values are not allowed in this context  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-
+stack/inventory-awscicdstack': line 6, column 18, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  db01 ansible_host=10.20.4.44
+^ here  There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+
+2022-10-13 12:36:03,342 p=3137 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack:7: Expected
+key=value host variable assignment, got: ansible_host:
+
+2022-10-13 12:36:03,343 p=3137 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 12:36:03,343 p=3137 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 12:36:03,604 p=3137 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all instances in the stack] ****************************************************************************************************************************
+2022-10-13 12:36:03,629 p=3137 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 12:36:04,906 p=3137 u=ubuntu n=ansible | fatal: [web01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.149: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:36:04,913 p=3137 u=ubuntu n=ansible | fatal: [app01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.91: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:36:04,955 p=3137 u=ubuntu n=ansible | fatal: [mc01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.126: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:36:04,966 p=3137 u=ubuntu n=ansible | fatal: [rmq01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.138: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:36:04,971 p=3137 u=ubuntu n=ansible | fatal: [db01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.44: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:36:04,973 p=3137 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 12:36:04,973 p=3137 u=ubuntu n=ansible | app01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:36:04,973 p=3137 u=ubuntu n=ansible | db01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:36:04,974 p=3137 u=ubuntu n=ansible | mc01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:36:04,974 p=3137 u=ubuntu n=ansible | rmq01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:36:04,974 p=3137 u=ubuntu n=ansible | web01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:39:35,875 p=4115 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   mapping values are not allowed in this context  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-
+stack/inventory-awscicdstack': line 6, column 18, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  db01 ansible_host=10.20.4.44
+^ here  There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+
+2022-10-13 12:39:35,875 p=4115 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack:7: Expected
+key=value host variable assignment, got: ansible_host:
+
+2022-10-13 12:39:35,876 p=4115 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 12:39:35,876 p=4115 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 12:39:35,970 p=4115 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all instances in the stack] ****************************************************************************************************************************
+2022-10-13 12:39:35,980 p=4115 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 12:39:37,236 p=4115 u=ubuntu n=ansible | fatal: [web01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.149: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:39:37,265 p=4115 u=ubuntu n=ansible | fatal: [app01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.91: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:39:37,297 p=4115 u=ubuntu n=ansible | fatal: [mc01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.126: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:39:37,328 p=4115 u=ubuntu n=ansible | fatal: [rmq01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.138: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:39:37,331 p=4115 u=ubuntu n=ansible | fatal: [db01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.44: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:39:37,333 p=4115 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 12:39:37,334 p=4115 u=ubuntu n=ansible | app01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:39:37,334 p=4115 u=ubuntu n=ansible | db01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:39:37,334 p=4115 u=ubuntu n=ansible | mc01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:39:37,334 p=4115 u=ubuntu n=ansible | rmq01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:39:37,334 p=4115 u=ubuntu n=ansible | web01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:40:45,406 p=4148 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with yaml plugin: We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)  Syntax Error while loading YAML.   mapping values are not allowed in this context  The error appears to be in '/home/ubuntu/ansible-aws-vpc/provision-
+stack/inventory-awscicdstack': line 6, column 18, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  db01 ansible_host=10.20.4.44
+^ here  There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+
+2022-10-13 12:40:45,407 p=4148 u=ubuntu n=ansible | [WARNING]:  * Failed to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack with ini plugin: /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack:7: Expected
+key=value host variable assignment, got: ansible_host:
+
+2022-10-13 12:40:45,407 p=4148 u=ubuntu n=ansible | [WARNING]: Unable to parse /home/ubuntu/ansible-aws-vpc/provision-stack/inventory-awscicdstack as an inventory source
+
+2022-10-13 12:40:45,407 p=4148 u=ubuntu n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2022-10-13 12:40:45,502 p=4148 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all instances in the stack] ****************************************************************************************************************************
+2022-10-13 12:40:45,511 p=4148 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 12:40:46,784 p=4148 u=ubuntu n=ansible | fatal: [web01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.149: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:40:46,800 p=4148 u=ubuntu n=ansible | fatal: [app01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.91: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:40:46,835 p=4148 u=ubuntu n=ansible | fatal: [mc01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.126: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:40:46,844 p=4148 u=ubuntu n=ansible | fatal: [rmq01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.138: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:40:46,862 p=4148 u=ubuntu n=ansible | fatal: [db01]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ubuntu@10.20.4.44: Permission denied (publickey).", "unreachable": true}
+2022-10-13 12:40:46,863 p=4148 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 12:40:46,863 p=4148 u=ubuntu n=ansible | app01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:40:46,864 p=4148 u=ubuntu n=ansible | db01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:40:46,864 p=4148 u=ubuntu n=ansible | mc01                       : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:40:46,864 p=4148 u=ubuntu n=ansible | rmq01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:40:46,864 p=4148 u=ubuntu n=ansible | web01                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:43:13,903 p=5132 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all instances in the stack] ****************************************************************************************************************************
+2022-10-13 12:43:13,913 p=5132 u=ubuntu n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+2022-10-13 12:43:16,078 p=5132 u=ubuntu n=ansible | ok: [controller]
+2022-10-13 12:43:16,325 p=5132 u=ubuntu n=ansible | ok: [app01]
+2022-10-13 12:43:16,419 p=5132 u=ubuntu n=ansible | ok: [mc01]
+2022-10-13 12:43:16,445 p=5132 u=ubuntu n=ansible | ok: [rmq01]
+2022-10-13 12:43:17,497 p=5132 u=ubuntu n=ansible | ok: [web01]
+2022-10-13 12:43:19,735 p=5132 u=ubuntu n=ansible | ok: [db01]
+2022-10-13 12:43:19,752 p=5132 u=ubuntu n=ansible | TASK [Import host ip variables] ***************************************************************************************************************************************************************************
+2022-10-13 12:43:19,803 p=5132 u=ubuntu n=ansible | ok: [controller]
+2022-10-13 12:43:19,829 p=5132 u=ubuntu n=ansible | ok: [web01]
+2022-10-13 12:43:19,849 p=5132 u=ubuntu n=ansible | ok: [app01]
+2022-10-13 12:43:19,875 p=5132 u=ubuntu n=ansible | ok: [mc01]
+2022-10-13 12:43:19,875 p=5132 u=ubuntu n=ansible | ok: [rmq01]
+2022-10-13 12:43:19,884 p=5132 u=ubuntu n=ansible | ok: [db01]
+2022-10-13 12:43:19,893 p=5132 u=ubuntu n=ansible | TASK [Update hosts file for all hosts] ********************************************************************************************************************************************************************
+2022-10-13 12:43:20,811 p=5132 u=ubuntu n=ansible | changed: [rmq01]
+2022-10-13 12:43:20,815 p=5132 u=ubuntu n=ansible | changed: [mc01]
+2022-10-13 12:43:20,815 p=5132 u=ubuntu n=ansible | changed: [web01]
+2022-10-13 12:43:20,816 p=5132 u=ubuntu n=ansible | changed: [app01]
+2022-10-13 12:43:20,865 p=5132 u=ubuntu n=ansible | changed: [controller]
+2022-10-13 12:43:21,141 p=5132 u=ubuntu n=ansible | changed: [db01]
+2022-10-13 12:43:21,158 p=5132 u=ubuntu n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************
+2022-10-13 12:43:21,159 p=5132 u=ubuntu n=ansible | app01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:43:21,159 p=5132 u=ubuntu n=ansible | controller                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:43:21,159 p=5132 u=ubuntu n=ansible | db01                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:43:21,159 p=5132 u=ubuntu n=ansible | mc01                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:43:21,160 p=5132 u=ubuntu n=ansible | rmq01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-10-13 12:43:21,160 p=5132 u=ubuntu n=ansible | web01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
