@@ -6,7 +6,7 @@
     - name: Install rabbitmq server
       ansible.builtin.apt:
         name: rabbitmq-server
-        state: absent
+        state: present
         update_cache: true
       tags:
         - package
