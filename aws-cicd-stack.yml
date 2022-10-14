@@ -95,7 +95,6 @@
         filters:
           "tag:Name": web01
       register: web01_out
-      when: web01_out.changed
 
     - name: Creating Tomcat app01
       amazon.aws.ec2_instance:
@@ -119,7 +118,6 @@
         filters:
           "tag:Name": app01
       register: app01_out
-      when: app01_out.changed 
 
     - name: Creating memcached1 mc01
       amazon.aws.ec2_instance:
@@ -143,7 +141,6 @@
         filters:
           "tag:Name": mc01
       register: mc01_out
-      when: mc01_out.changed
 
     - name: Creating RabbitmQ rmq01
       amazon.aws.ec2_instance:
@@ -167,7 +164,6 @@
         filters:
           "tag:Name": rmq01
       register: rmq01_out
-      when: rmq01_out.changed
 
     - name: Creating MySql db01
       amazon.aws.ec2_instance:
@@ -191,7 +187,6 @@
         filters:
           "tag:Name": db01
       register: db01_out
-      when: db01_out.changed
 
     - ansible.builtin.debug:
         var: web01_out
