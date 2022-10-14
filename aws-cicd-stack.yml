@@ -95,7 +95,7 @@
         filters:
           "tag:Name": web01
       register: web01_out
-      when: app01_out.changed
+      when: web01_out.changed
 
     - name: Creating Tomcat app01
       amazon.aws.ec2_instance:
@@ -119,7 +119,7 @@
         filters:
           "tag:Name": app01
       register: app01_out
-      when: app01_out.changed
+      when: app01_out.changed 
 
     - name: Creating memcached1 mc01
       amazon.aws.ec2_instance:
