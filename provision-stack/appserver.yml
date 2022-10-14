@@ -101,7 +101,8 @@
             - deploy
 
         - name: copy ROOT dir with old_ROOT name
-          ansible.builtin.shell: cp -r ROOT old_ROOT
+          ansible.builtin.shell: 
+            cmd: cp -r ROOT old_ROOT
           args:
             chdir: /usr/local/tomcat8/webapps/
 
@@ -127,7 +128,8 @@
                 - deploy
           rescue:
             - name: else deploy old ROOT if artifact deployment failed
-              ansible.builtin.shell: cp -r old_ROOT ROOT
+              ansible.builtin.shell: 
+                cmd: cp -r old_ROOT ROOT
               args:
                 chdir: /usr/local/tomcat8/webapps/
       
