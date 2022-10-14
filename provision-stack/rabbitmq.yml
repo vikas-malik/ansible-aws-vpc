@@ -32,8 +32,9 @@
       tags:
         - package
     
-    - ansible.builtin.apt_repository:
-        repo: deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/deb/ubuntu jammy main
+    - name: add apt_repository
+      ansible.builtin.apt_repository:
+        repo: deb https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/deb/ubuntu focal main
         state: present
       tags:
         - package
