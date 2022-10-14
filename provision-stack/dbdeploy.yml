@@ -12,7 +12,7 @@
     
     - name: Restoring database
       ansible.builtin.mysql_db:
-        name: accounts
+        name: "{{ dbname }}"
         login_user: "{{ dbuser }}"
         login_password: "{{ dbpass }}"
         state: import
