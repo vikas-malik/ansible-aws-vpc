@@ -2,11 +2,6 @@
 - name: Install memcached, start & enable svc
   hosts: mcsrvgrp
   gather_facts: false
-  pre_tasks:
-    - name: Update all packages
-      ansible.builtin.apt:
-        name: "*"
-        state: latest
   tasks:
     - name: Install memcached
       ansible.builtin.apt:
