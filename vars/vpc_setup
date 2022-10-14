@@ -24,7 +24,7 @@ zone3: us-east-2c
 state: present
 
 # Ami id for aws amzon linux 2 in region ohio
-bastion_ami: ami-0f924dc71d44d23e2
+bastion_ami: ami-0d5bf08bc8017c83b
 
 # variable for my ip
 MYIP: 202.173.126.209/32
