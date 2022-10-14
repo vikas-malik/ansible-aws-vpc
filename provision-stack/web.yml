@@ -1,0 +1,52 @@
+---
+- name: Set Nginx service
+  hosts: websrvgrp
+  gather_facts: false
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+        cache_valid_time: 86400
+      tags:
+        - package
+    
+    - name: Start and Enable Nginx Service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+      tags:
+        - svc
+    
+    - name: Disable Nginx default website
+      ansible.builtin.file:
+        path: etc/nginx/sites-enabled/default
+        state: absent
+      tags:
+        - conf
+
+    - name: Deploy web conf file
+      ansible.builtin.template:
+        src: templates/nginxvpro.j2
+        dest: /etc/nginx/sites-available/vproapp
+      tags:
+        - conf
+
+
+    - name: Enable vproapp website
+      ansible.builtin.file:
+        src: /etc/nginx/sites-available/vproapp
+        dest: /etc/nginx/sites-enabled/vproapp
+        state: link
+      notify:
+        - Restart Nginx
+      tags:
+        - conf
+
+  handlers:
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
