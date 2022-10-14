@@ -84,6 +84,7 @@
         security_group: "{{ awscicdstack_out.group_id }}"
         vpc_subnet_id: "{{ privsub1id }}"
         wait: yes
+        wait_timeout: 300
         tags:
           Name: "web01"
           Project: ansible-awsstack
@@ -107,6 +108,7 @@
         security_group: "{{ awscicdstack_out.group_id }}"
         vpc_subnet_id: "{{ privsub1id }}"
         wait: yes
+        wait_timeout: 300
         tags:
           Name: "app01"
           Project: ansible-awsstack
@@ -130,6 +132,7 @@
         security_group: "{{ awscicdstack_out.group_id }}"
         vpc_subnet_id: "{{ privsub1id }}"
         wait: yes
+        wait_timeout: 300
         tags:
           Name: "mc01"
           Project: ansible-awsstack
@@ -153,6 +156,7 @@
         security_group: "{{ awscicdstack_out.group_id }}"
         vpc_subnet_id: "{{ privsub1id }}"
         wait: yes
+        wait_timeout: 300
         tags:
           Name: "rmq01"
           Project: ansible-awsstack
@@ -176,6 +180,7 @@
         security_group: "{{ awscicdstack_out.group_id }}"
         vpc_subnet_id: "{{ privsub1id }}"
         wait: yes
+        wait_timeout: 300
         tags:
           Name: "db01"
           Project: ansible-awsstack
