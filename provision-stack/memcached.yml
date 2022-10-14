@@ -1,0 +1,43 @@
+---
+- name: Install memcached, start & enable svc
+  hosts: mcsrvgrp
+  gather_facts: false
+  pre_tasks:
+    - name: Update all packages
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+  tasks:
+    - name: Install memcached
+      ansible.builtin.apt:
+        name: memcached
+        state: present
+        update_cache: true
+        cache_valid_time: 86400
+      tags:
+        - package
+
+    - name: Start & Enable memcached
+      ansible.builtin.service:
+        name: memcached
+        state: started
+        enabled: true
+      tags:
+        - svc
+
+    - name: Enable remote login to memcached
+      ansible.builtin.lineinfile:
+        path: /etc/memcached.conf
+        regexp: '^-l'
+        line: '-l 0.0.0.0'
+        backup: true
+      notify:
+        - restart memcached
+      tags:
+        - conf
+  
+  handlers:
+    - name: restart memcached
+      ansible.builtin.service:
+        name: memcached
+        state: restarted

@@ -12,7 +12,7 @@
       ansible.builtin.package:
         name: "{{ item }}"
         state: present
-        update_cache: yes
+        update_cache: true
         cache_valid_time: 86400
       loop:
         - mysql-server
@@ -20,7 +20,7 @@
         - python-mysqldb
         - python3-mysqldb
         - libmysqlclient-dev
-      ignore_errors: yes
+      ignore_errors: true
       tags:
         - package
     
@@ -28,7 +28,7 @@
       ansible.builtin.service:
         name: mysql
         state: started
-        enabled: yes
+        enabled: true
       tags:
         - svc
 
@@ -50,7 +50,7 @@
         path: /etc/mysql/mysql.conf.d/mysqld.cnf
         regexp: '^bind-address'
         line: 'bind-address = 0.0.0.0'
-        backup: yes
+        backup: true
       notify:
         - Restart mysql
       tags:
