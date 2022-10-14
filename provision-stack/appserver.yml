@@ -163,6 +163,6 @@
 
   handlers:
     - name: Restart Tomcat
-      service:
+      ansible.builtin.service:
         name: tomcat8
         state: restarted
