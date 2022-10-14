@@ -54,7 +54,7 @@
       tags:
         - svc
 
-    - name: config setup
+    - name: config setupweb.yml
       ansible.builtin.copy:
         content: |
           [{rabbit, [{loopback_users, []}]}].
